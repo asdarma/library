@@ -44,6 +44,17 @@ function displayBook() {
         `
     })
 };
-
 displayBook();
 
+// dialog open and close
+const openDialog = document.querySelector("[openDialog]");
+const closeDialog = document.querySelector("[closeDialog]");
+const modal = document.querySelector("[modal]")
+
+openDialog.addEventListener("click", () => {
+    modal.showModal();
+})
+
+closeDialog.addEventListener("click", () => {
+    modal.close();
+})

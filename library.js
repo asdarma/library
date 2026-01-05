@@ -9,52 +9,40 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
     this.id = crypto.randomUUID()
-    this.info = function() {
-        console.log(`${this.title} by ${this.author}, ${this.pages} pages and ${this.read}. Book ID: ${this.id}`)
-    };
 };
 
-// sampe books
+// book array
+const myLibrary = [];
+
+// sample books
 const torah = new Book("The Torah", "Prophet Moses", 1200, "read");
 const psalm = new Book("The Psalm", "King David", 200, "read");
 const rev = new Book("The Revelation", "Apostle John", 150, "not read");
 
-const myLIbrary = [];
-
 function addBook(book) {    // 3. Write a function that loops through
-    myLIbrary.push(book);
+    myLibrary.push(book);
 }
 
-addBook(torah);     // added book manually to show
+// manually add books to show
+addBook(torah);
 addBook(psalm);
 addBook(rev);
 
-const libraryTable = document.getElementById('libraryTable');   // get the DOM
+// DOM to show the book
+const bookLibrary = document.getElementById('bookLibrary');
 
 function displayBook() {
-    myLIbrary.forEach(book => {     // loop on array + dynamicly add then show each data
-        libraryTable.innerHTML += `
-        <tr>
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.page}</td>
-            <td>${book.read}</td>
-            <td>Status</td>
-        </tr>
+    // create Div for each book
+    const bookDiv = document.createElement('div');
+    // foreach book
+    myLibrary.forEach(book => {
+        bookLibrary.innerHTML += `
+        <h3>${book.title}</h3>
+        <p><strong>Author: </strong>${book.author}</p>
+        <p><strong>Pages: </strong>${book.pages}</p>
+        <p><strong>Read: </strong>${book.read}</p>
         `
+    bookLibrary.appendChild(bookDiv);
     })
-};
-displayBook();
-
-// dialog open and close
-const openDialog = document.querySelector("[openDialog]");
-const closeDialog = document.querySelector("[closeDialog]");
-const modal = document.querySelector("[modal]")
-
-openDialog.addEventListener("click", () => {
-    modal.showModal();
-})
-
-closeDialog.addEventListener("click", () => {
-    modal.close();
-})
+}
+displayBook()

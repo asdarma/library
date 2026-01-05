@@ -7,41 +7,21 @@
     <link rel="stylesheet" href="library.css">
 </head>
 <body>
-    <div id="titleDiv">
-        <h2>My Library</h2>
-        <button openDialog>Add New Book</button>
+    <h2>My Book Library</h2>
+
+    <div id="bookForm">
+        <p>New Book Form</p>
+        <input type="text" id="title" placeholder="Enter the TITLE of the book">
+        <input type="text" id="author" placeholder="Enter the AUTHOR of the book">
+        <input type="number" id="page" placeholder="Enter the number of PAGES">
+        <label><input type="checkbox" id="read">Check the box if read</label>
+        <button>Submit New Book</button>
     </div>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Page</th>
-                    <th>Read</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="libraryTable">
-                <!-- Here goes the book data -->
-            </tbody>
-        </table>
-        
-        <!-- dialog for adding new book -->
-        <dialog modal>
-            <label for="title">Title: </label>
-            <input type="text" name="title" placeholder="Enter the TITLE of the book" required>
-            <label for="author">Author: </label>
-            <input type="text" name="author" placeholder="Enter the AUTHOR of the book" required>
-            <label for="page">Page: </label>
-            <input type="number" name="page" placeholder="Enter the number of PAGES" required>
-            <label for="read">If Read, check the box</label>
-            <input type="checkbox" name="read" required>
-            <button closeDialog>Submit Book</button>
-        </dialog>
+
+    <div id="bookLibrary">
+        <!-- Book will be displayed here -->
     </div>
-    
-    
+
     <script src="library.js"></script>
 </body>
 </html>

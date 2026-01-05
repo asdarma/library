@@ -19,12 +19,15 @@ myLibrary.push(new Book("The Torah", "Prophet Moses", 1200, "read"));
 myLibrary.push(new Book("The Psalm", "King David", 200, "read"));
 myLibrary.push(new Book("The Revelation", "Apostle John", 150, "not read"));
 
-// DOM to show the book
-const bookLibrary = document.getElementById('bookLibrary');
 
 function displayBook() {
+    // DOM to show the book
+    const bookLibrary = document.getElementById('bookLibrary');
+    bookLibrary.innerHTML = ''
+
     // create Div for each book
     const bookDiv = document.createElement('div');
+
     // foreach book
     myLibrary.forEach(book => {
         bookLibrary.innerHTML += `
@@ -38,6 +41,14 @@ function displayBook() {
 }
 displayBook()
 
-function addBook(book) {    // 3. Write a function that loops through
-    myLibrary.push(book);
+function addBook() {    
+    // get value
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    displayBook();
 }

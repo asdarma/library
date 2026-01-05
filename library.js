@@ -51,4 +51,10 @@ function addBook() {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     displayBook();
+
+    // celar the form after adding book
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = false;
 }

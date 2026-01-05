@@ -15,18 +15,9 @@ function Book(title, author, pages, read) {
 const myLibrary = [];
 
 // sample books
-const torah = new Book("The Torah", "Prophet Moses", 1200, "read");
-const psalm = new Book("The Psalm", "King David", 200, "read");
-const rev = new Book("The Revelation", "Apostle John", 150, "not read");
-
-function addBook(book) {    // 3. Write a function that loops through
-    myLibrary.push(book);
-}
-
-// manually add books to show
-addBook(torah);
-addBook(psalm);
-addBook(rev);
+myLibrary.push(new Book("The Torah", "Prophet Moses", 1200, "read"));
+myLibrary.push(new Book("The Psalm", "King David", 200, "read"));
+myLibrary.push(new Book("The Revelation", "Apostle John", 150, "not read"));
 
 // DOM to show the book
 const bookLibrary = document.getElementById('bookLibrary');
@@ -46,3 +37,7 @@ function displayBook() {
     })
 }
 displayBook()
+
+function addBook(book) {    // 3. Write a function that loops through
+    myLibrary.push(book);
+}

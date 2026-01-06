@@ -25,6 +25,11 @@ function displayBook() {
     const bookLibrary = document.getElementById('bookLibrary');
     bookLibrary.innerHTML = ''
 
+    if (myLibrary.length == 0) {
+        bookLibrary.innerHTML = `
+        <h3>Library is empty</h3>
+        `
+    }
     // create Div for each book
     const bookDiv = document.createElement('div');
 
@@ -43,12 +48,14 @@ function displayBook() {
 displayBook()
 
 
-function addBook() {    
+function addBook() {
     // get value
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const read = document.getElementById('read').checked;
+
+    if (title && author && pages) {
 
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -59,6 +66,9 @@ function addBook() {
     document.getElementById('author').value = '';
     document.getElementById('pages').value = '';
     document.getElementById('read').checked = false;
+    } else {
+        alert ("Fill all New Book Form");
+    }
 }
 
 // Added line 38 template literal for button and get the id

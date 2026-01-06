@@ -28,18 +28,20 @@ function displayBook() {
     // create Div for each book
     const bookDiv = document.createElement('div');
 
-    // foreach book
+    // foreach book create template literal, then append to bookLibrary div
     myLibrary.forEach(book => {
         bookLibrary.innerHTML += `
         <h3>${book.title}</h3>
         <p><strong>Author: </strong>${book.author}</p>
         <p><strong>Pages: </strong>${book.pages}</p>
         <p><strong>Read: </strong>${book.read}</p>
+        <button onclick=removeBook("${book.id}")>Remove</button>
         `
     bookLibrary.appendChild(bookDiv);
     })
 }
 displayBook()
+
 
 function addBook() {    
     // get value
@@ -58,3 +60,15 @@ function addBook() {
     document.getElementById('pages').value = '';
     document.getElementById('read').checked = false;
 }
+
+// Added line 38 template literal for button and get the id
+// function take id as param, find the index of matching id
+// Then splice the array then refresh by call displayBook()
+function removeBook(uuid) {
+    index = myLibrary.findIndex(book => book.id === uuid)
+    if (index !== -1) {
+        myLibrary.splice(index, 1)
+    }
+    displayBook();
+}
+

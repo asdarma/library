@@ -39,8 +39,9 @@ function displayBook() {
         <h3>${book.title}</h3>
         <p><strong>Author: </strong>${book.author}</p>
         <p><strong>Pages: </strong>${book.pages}</p>
-        <p><strong>Read: </strong>${book.read}</p>
+        <p><strong>Read: </strong>${book.read ? 'Read' : 'Unread'}</p>
         <button onclick=removeBook("${book.id}")>Remove</button>
+        <button onclick=toggleRead("${book.id}")>Toggle</button>
         `
     bookLibrary.appendChild(bookDiv);
     })
@@ -71,8 +72,8 @@ function addBook() {
     }
 }
 
-// Added line 38 template literal for button and get the id
-// function take id as param, find the index of matching id
+// Added line 43 template literal for button and get the Book id
+// This function then take id as param, find the index of matching id
 // Then splice the array then refresh by call displayBook()
 function removeBook(uuid) {
     index = myLibrary.findIndex(book => book.id === uuid)
@@ -82,3 +83,16 @@ function removeBook(uuid) {
     displayBook();
 }
 
+// Update line 42 for toggle the book.read
+// Added line 44 template literal for button and get the Book id
+// This function then take the id as param, find the index
+// Then toggle the read
+function toggleRead(uuid) {
+
+    console.log('toggle') // check
+    // book = myLibrary.findIndex(book => book.id = uuid)
+    // if (book) {
+    //     book.read = !book.read;
+    // }
+    // displayBook()
+}

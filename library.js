@@ -15,9 +15,9 @@ function Book(title, author, pages, read) {
 const myLibrary = [];
 
 // sample books
-myLibrary.push(new Book("The Torah", "Prophet Moses", 1200, "read"));
-myLibrary.push(new Book("The Psalm", "King David", 200, "read"));
-myLibrary.push(new Book("The Revelation", "Apostle John", 150, "not read"));
+myLibrary.push(new Book("The Torah", "Prophet Moses", 1200, true)); // update
+myLibrary.push(new Book("The Psalm", "King David", 200, false));
+myLibrary.push(new Book("The Revelation", "Apostle John", 150, true));
 
 
 function displayBook() {
@@ -74,6 +74,7 @@ function addBook() {
 
 // Added line 43 template literal for button and get the Book id
 // This function then take id as param, find the index of matching id
+// array.findIndex -> find the INDEX of the OBJECT
 // Then splice the array then refresh by call displayBook()
 function removeBook(uuid) {
     index = myLibrary.findIndex(book => book.id === uuid)
@@ -83,16 +84,16 @@ function removeBook(uuid) {
     displayBook();
 }
 
+// Update line 18 for the sample books to use 'true' or 'false' instead 'read' and 'not read'
 // Update line 42 for toggle the book.read
 // Added line 44 template literal for button and get the Book id
-// This function then take the id as param, find the index
-// Then toggle the read
+// array.find -> find the ACTUAL OBJECT
+// This function then take the id as param, find the object itself
+// Then toggle the read true / false
 function toggleRead(uuid) {
-
-    console.log('toggle') // check
-    // book = myLibrary.findIndex(book => book.id = uuid)
-    // if (book) {
-    //     book.read = !book.read;
-    // }
-    // displayBook()
+    const book = myLibrary.find(book => book.id === uuid)
+    if (book) {
+        book.read = !book.read;
+        displayBook()
+    }
 }
